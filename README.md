@@ -1,24 +1,85 @@
-# README
+nagano_cake
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ケーキの通販サイト
+ 
+## 簡単な説明
 
-Things you may want to cover:
+ながのCAKEは長野県にある小さな洋菓子店です。最近instagramで人気となり、この通販サイトを開設することになりました。 
 
-* Ruby version
+ 
+## 機能
 
-* System dependencies
+ 【顧客側】
+ ・トップページ閲覧
+ ・会員登録・ログイン・ログアウト
+ ・商品一覧閲覧
+ ・商品詳細閲覧
+ ・カート内一覧閲覧・編集
+ ・注文情報登録
+ ・マイページ閲覧
+ ・会員情報編集
+ ・配送先一覧閲覧
+ ・配送先登録・編集
+ ・注文履歴一覧閲覧
+ ・注文詳細閲覧
+ 
+ 【お店側】
+ ・ログイン・ログアウト
+ ・商品一覧閲覧
+ ・商品登録・編集
+ ・商品詳細閲覧
+ ・ジャンル詳細閲覧
+ ・ジャンル登録・編集
+ ・会員一覧閲覧
+ ・会員詳細閲覧
+ ・会員編集
+ ・注文履歴一覧閲覧
+ ・注文詳細閲覧
+ ・注文関連ステータス編集
 
-* Configuration
+ 
+## 必要要件
+ 
+- 顧客側の必要画面数〈17〉
+- お店側の必要画面数〈12〉
+ 
+ 
+## 使い方
 
-* Database creation
+ 【顧客側】
+1. 会員登録・ログイン
+2. 商品一覧より商品選択
+3. 個数を指定しカートに入れる
+4. 全て入れ終わったら情報入力画面にすすむ
+5. 支払方法・お届け先を選択
+6. 内容を確認し注文確定する
+7. その他【閲覧画面】マイページ・配送先一覧・注文履歴一覧・注文履歴詳細
+8. その他【編集機能】会員情報・配送先
+ 
+ 【お店側】
+1. ログイン
+2. 商品登録画面より商品登録
+3. ジャンル一覧画面よりジャンル登録
+4. 注文履歴一覧より注文確認
+5. 注文履歴詳細画面よりステータスの更新
+6. 内容を確認し注文確定する
+7. その他【閲覧画面】商品一覧・商品詳細・会員一覧・会員詳細・注文履歴一覧・注文履歴詳細
+8. その他【編集機能】商品・ジャンル・会員情報
 
-* Database initialization
 
-* How to run the test suite
+## 使用するgem
+ 
+・devise
+・refile
+・refile-mini_magick
 
-* Services (job queues, cache servers, search engines, etc.)
+ 
+## その他
+ 
 
-* Deployment instructions
+ 
+## 作者
+ 
+27050鈴木唯
 
-* ...
+ 
