@@ -1,2 +1,8 @@
 <h1>注文履歴一覧</h1>
 
+<% @orders.each do |order| %>
+  <%= l order.created_at %>
+  <%= "#{order.customer.last_name}"+"#{order.customer.first_names}" %>
+  <%= order.order_items.amount.sum %>
+  <%= order.order_status %>
+<% end %>
