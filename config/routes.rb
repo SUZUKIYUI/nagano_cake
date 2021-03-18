@@ -38,8 +38,20 @@ Rails.application.routes.draw do
 
   # ------------------------お店側のルート--------------------------
 
+  namespace :admin do
 
+    root to: "homes#top"
+    resources :items, except:[:destroy]
+    resources :genres, only:[:index, :create, :edit, :update]
+    resources :customers, only:[:index, :show, :edit, :update] do
+      resources :order_items, only:[:update]
+    end
 
-  devise_for :admins
+  end
+  devise_for :admins, path: :admin, controllers:{
+    sessions:"admin/admins/sessions",
+    registrations:"admin/admins/registrations",
+    passwords:"admin/admins/passwords"
+  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
