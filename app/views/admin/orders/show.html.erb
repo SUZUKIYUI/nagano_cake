@@ -1,2 +1,51 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h1>注文履歴詳細</h1>
+
+<p>購入者</p>
+<%= @order.customer.last_name + @order.customer.first_name %>
+
+<p>注文日</p>
+<%= @order.created_at.strftime('%Y/%M/%D') %>
+
+<p>配達先</p>
+<span>〒</span><%= @order.delivery_postal_code %>
+<%= @order.delivery_address %>
+<%= @order.delivery_addressee %>
+
+<p>支払方法</p>
+<%= @order.method_of_payment %>
+
+<%= form_with model:@order, local: true do |f| %>
+  <%= f.label :order_status, "注文ステータス" %>
+  <%= f.select(:order_status, {prompt: "--選択して下さい--"} ) %><br>
+  <%= f.submit "更新" %>
+<% end %>
+
+<!------------------------------------------------------------------>
+
+<p>商品名</p>
+<p>単価（税込）</p>
+<p>数量</p>
+<p>小計</p>
+<p>製作ステータス</p>
+
+<% @order_items.each do |order_item| %>
+  <%= order_item.item.name %>
+  <%= order_item.tax_included_price %>
+  <%= order_item.amount %>
+  <%= order_item.tax_included_price * order_item.amount %>
+  <%= form_with model:order_item, local: true do |f| %>
+    <%= f.select(:production_status) %>
+    <%= f.submit "更新" %>
+  <% end %>
+<% end %>
+
+<!----------------------------------------------------------------->
+
+<p>商品合計</p>
+<%= @order.total_price - @order.shipping_fee %><span>円</span>
+
+<p>送料</p>
+<%= @order.shipping_fee %><span>円</span>
+
+<p>請求金額合計</p>
+<<%= @order.total_price %>span>円</span>
