@@ -39,7 +39,6 @@ Rails.application.routes.draw do
   # ------------------------お店側のルート--------------------------
 
   namespace :admin do
-
     root to: "homes#top"
     resources :items, except:[:destroy]
     resources :genres, only:[:index, :create, :edit, :update]
@@ -47,7 +46,6 @@ Rails.application.routes.draw do
     resources :orders, only:[:show, :update] do
       resources :order_items, only:[:update]
     end
-
   end
   devise_for :admins, path: :admin, controllers:{
     sessions:"admin/admins/sessions",
