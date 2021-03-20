@@ -20,6 +20,12 @@ class Admin::GenresController < ApplicationController
   end
 
   def update
+    @genre=Genre.new(genre_params)
+    if @genre.save
+      redirect_to admin_genres_path
+    else
+      render :edit
+    end
   end
 
   # この下には何も記述しないこと！
