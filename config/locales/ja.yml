@@ -21,7 +21,4 @@ ja:
         production_completed: "制作完了"
   #-------------------------------------
 
-  time:
-    formats:
-      default: "%Y/%M/%D %H:%M:%S"
 

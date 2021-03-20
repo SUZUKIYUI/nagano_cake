@@ -5,9 +5,22 @@
 <p>注文個数</p>
 <p>注文ステータス</p>
 
-<% @orders.each do |order| %>
-  <%= l order.created_at %>
-  <%= "#{order.customer.last_name}"+"#{order.customer.first_names}" %>
-  <%= order.order_items.amount.sum %>
-  <%= order.order_status %>
+<% if @customer %>
+  <% @customer.orders.each do |order| %>
+    <%= link_to "#{order.created_at.strftime('%Y/%M/%D/%H/%M/%S')}", admin_order_path(order.id) %>
+    <%= "#{order.customer.last_name}"+"#{order.customer.first_names}" %>
+    <%= order.order_items.amount.sum %>
+    <%= order.order_status %>
+  <% end %>
+<% else %>
+  <% @orders.each do |order| %>
+    <%= link_to "#{order.created_at.strftime('%Y/%M/%D/%H/%M/%S')}", admin_order_path(order.id) %>
+    <%= "#{order.customer.last_name}"+"#{order.customer.first_names}" %>
+    <%= order.order_items.amount.sum %>
+    <%= order.order_status %>
+  <% end %>
 <% end %>
+
+<!--bootstrapで整える-->
+<!--履歴が多い場合に次のページに表示されるようにする-->
+<!--一会員と全会員の表示分けができているかチェック-->
