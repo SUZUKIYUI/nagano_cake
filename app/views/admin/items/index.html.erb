@@ -1,5 +1,7 @@
 <h1>商品一覧</h1>
 
+<%= link_to "+", new_admin_item_path %>
+
 <p>商品ID</p>
 <p>商品名</p>
 <p>税抜価格</p>
@@ -8,8 +10,11 @@
 
 <% @items.each do |item| %>
   <%= item.id %>
-  <%= item.name %>
+  <%= link_to "#{item.name}", admin_item_path(item.id) %>
   <%= item.price %>
   <%= item.genre.name %>
   <%= item.is_active %>
 <% end %>
+
+<!--bootstrapで整える-->
+<!--項目が多い場合に次のページに表示されるようにする-->
