@@ -13,13 +13,11 @@ class Admin::ItemsController < ApplicationController
     @item=Item.new(item_params)
     @genre=Genre.find_by(name: genre_params)
     @item.genre_id=@genre.id
-
     if @item.save
       redirect_to admin_item_path(@item.id)
     else
       render :new
     end
-
   end
 
   def show
@@ -32,6 +30,14 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update
+    @item=Item.new(item_params)
+    @genre=Genre.find_by(name: genre_params)
+    @item.genre_id=@genre.id
+    if @item.save
+      redirect_to admin_item_path(@item.id)
+    else
+      render :new
+    end
   end
 
 # この下には何も記述しないこと！

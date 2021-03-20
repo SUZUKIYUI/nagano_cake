@@ -1,6 +1,6 @@
 <h1>商品編集</h1>
 
-<%= form_with model:@item, local: true do |f| %>
+<%= form_with model:@item, url:admin_item_path(@item.id), local: true do |f| %>
   <%= f.label :image, "商品画像" %>
   <%= f.attachment_field :image %><br>
   <%= f.label :name, "商品名" %>
@@ -15,3 +15,7 @@
   <%= f.radio_button :is_active, "販売中", checked: true %>販売中 <%= f.radio_button :is_active, "販売停止中" %>販売停止中<br>
   <%= f.submit "新規登録" %>
 <% end %>
+
+<!--bootstrapで整える-->
+<!--未入力の項目があればはじき返す-->
+<!--エラー文の表s示-->
