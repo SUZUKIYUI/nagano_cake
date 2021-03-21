@@ -15,6 +15,5 @@
   <%= item.genre.name %>
   <%= item.is_active ? '販売中' : '販売停止中' %>
 <% end %>
-
+<%= paginate @items %>
 <!--bootstrapで整える-->
-<!--項目が多い場合に次のページに表示されるようにする（kaminari gem）-->
