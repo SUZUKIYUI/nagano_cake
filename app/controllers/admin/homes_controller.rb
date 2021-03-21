@@ -3,7 +3,9 @@ class Admin::HomesController < ApplicationController
 
   def top
     @orders=Order.all
-    @one_person_orders=Order.find_by(customer_id: params[:id])
+    if params[:id]
+      @one_person_orders=Order.find_by(customer_id: params[:id])
+    end
   end
 
 end
