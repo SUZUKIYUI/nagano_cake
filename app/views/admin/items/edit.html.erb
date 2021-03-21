@@ -8,7 +8,9 @@
   <%= f.label :introduction, "商品説明" %>
   <%= f.text_area :introduction, placeholder: "ここに説明文を記述します" %><br>
   <%= f.label :genre_id, "ジャンル" %>
+
   <%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "--選択して下さい--"} ) %><br>
+
   <%= f.label :proce, "税抜価格" %>
   <%= f.text_field :price, placeholder: "1000" %><span>円</span><br>
   <%= f.label :is_active, "販売ステータス" %>
@@ -18,4 +20,5 @@
 
 <!--bootstrapで整える-->
 <!--未入力の項目があればはじき返す-->
-<!--エラー文の表s示-->
+<!--エラー文の表示-->
+<!--ジャンル選択の修正-->

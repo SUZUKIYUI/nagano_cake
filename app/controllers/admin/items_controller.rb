@@ -11,7 +11,6 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item=Item.new(item_params)
-    @genre=Genre.find_by(name: genre_params)
     @item.genre_id=@genre.id
     if @item.save
       redirect_to admin_item_path(@item.id)
@@ -31,7 +30,6 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item=Item.find(params[:id])
-    @genre=Genre.find_by(name: genre_params)
     @item.genre_id=@genre.id
     if @item.update(item_params)
       redirect_to admin_item_path(@item.id)
@@ -47,7 +45,4 @@ class Admin::ItemsController < ApplicationController
     params.require(:item).permit(:name, :image, :introduction, :price, :is_active)
   end
 
-  def genre_params
-    params.require(:genre).permit(:name)
-  end
 end
