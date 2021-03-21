@@ -27,7 +27,7 @@ ja:
         name: ジャンル名
       # ----------------
       item:
-        genre_id: ジャンル
+        genre: ジャンル
         name: 商品名
         image: 商品画像
         introduction: 商品説明
