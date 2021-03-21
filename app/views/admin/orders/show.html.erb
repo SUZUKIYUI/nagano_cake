@@ -33,7 +33,7 @@
   <%= order_item.tax_included_price %>
   <%= order_item.amount %>
   <%= order_item.tax_included_price * order_item.amount %>
-  <%= form_with model:order_item, local: true do |f| %>
+  <%= form_with model:order_item, url:admin_order_order_item_path(order_item), local: true do |f| %>
     <%= f.select(:production_status) %>
     <%= f.submit "更新" %>
   <% end %>
@@ -48,4 +48,6 @@
 <%= @order.shipping_fee %><span>円</span>
 
 <p>請求金額合計</p>
-<<%= @order.total_price %>span>円</span>
+<%= @order.total_price %><span>円</span>
+
+<!--bootstrapで整える-->

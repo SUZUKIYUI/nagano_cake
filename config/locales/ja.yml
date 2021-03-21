@@ -21,4 +21,7 @@ ja:
         production_completed: "制作完了"
   #-------------------------------------
 
-
+  activerecord:
+    attributes:
+      genre:
+        name: ジャンル名
