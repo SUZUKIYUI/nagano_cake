@@ -7,7 +7,9 @@
 
 <% @customers.each do |customer| %>
   <%= customer.id %>
-  <%= customer.last_name + customer.first_name %>
+  <%= link_to customer.last_name + customer.first_name, admin_customer_path(customer.id) %>
   <%= customer.email %>
   <%= customer.is_deleted %>
 <% end %>
+
+<!--bootstrapで整える-->
