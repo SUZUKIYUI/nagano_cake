@@ -5,17 +5,17 @@
 <p>注文個数</p>
 <p>注文ステータス</p>
 
-<% if @customer %>
-  <% @customer.orders.each do |order| %>
-    <%= link_to "#{order.created_at.strftime('%Y/%M/%D/%H/%M/%S')}", admin_order_path(order.id) %>
-    <%= "#{order.customer.last_name}"+"#{order.customer.first_names}" %>
+<% if @one_person_orders %>
+  <% @one_person_orders.each do |order| %>
+    <%= link_to order.created_at.strftime('%Y/%M/%D/%H/%M/%S'), admin_order_path(order.id) %>
+    <%= order.customer.last_name + order.customer.first_names %>
     <%= order.order_items.amount.sum %>
     <%= order.order_status %>
   <% end %>
 <% else %>
   <% @orders.each do |order| %>
-    <%= link_to "#{order.created_at.strftime('%Y/%M/%D/%H/%M/%S')}", admin_order_path(order.id) %>
-    <%= "#{order.customer.last_name}"+"#{order.customer.first_names}" %>
+    <%= link_to order.created_at.strftime('%Y/%M/%D/%H/%M/%S'), admin_order_path(order.id) %>
+    <%= order.customer.last_name + order.customer.first_names %>
     <%= order.order_items.amount.sum %>
     <%= order.order_status %>
   <% end %>

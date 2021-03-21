@@ -12,14 +12,14 @@
 <%= @customer.address %>
 <p>電話番号</p>
 <%= @customer.telephone_number %>
-<p>メールアドレス</p>
+<p>メールアドレス</p>jh
 <%= @customer.email %>
 <p>会員ステータス</p>
 <%= @customer.is_deleted %>
 
 
 <%= link_to "編集する", edit_admin_customer(@customer.id) %>
-<%= link_to "注文履歴一覧を見る", admin_root_path %>
+<%= link_to "注文履歴一覧を見る", admin_root_path(@customer.id) %>
 
 <!--bootstrapで整える-->
 <!--"注文履歴一覧を見る"から飛ぶとその顧客のみの履歴一覧に飛ぶ-->
