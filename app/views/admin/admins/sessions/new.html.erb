@@ -1,19 +1,23 @@
-<h2>管理者ログイン</h2>
+<div class="row">
+  <h2 class="px-3 py-0 text-center my-3">管理者ログイン</h2>
+</div>
+<div class="row">
+  <div class="col-md-8 m-auto">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field d-flex justify-content-between my-3">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "sample@example.com", class: "col-md-8" %>
+      </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "sample@example.com" %>
+      <div class="field d-flex justify-content-between mb-4">
+        <%= f.label :password, "パスワード" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "col-md-8" %>
+      </div>
+
+      <div class="actions d-block text-center">
+        <%= f.submit "ログイン", class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password, "パスワード" %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
-
+</div>
 <!--bootstrapで整える-->
