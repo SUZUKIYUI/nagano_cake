@@ -1,5 +1,16 @@
 <h1>商品編集</h1>
 
+<!-----------------エラーメッセージ------------------->
+<% if @item.errors.any? %>
+  <%= @item.errors.count %>件のエラー
+  <ul>
+    <% @item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<!---------------------------------------------------->
+
 <%= form_with model:@item, url:admin_item_path(@item.id), local: true do |f| %>
   <%= f.label :image, "商品画像" %>
   <%= f.attachment_field :image %><br>

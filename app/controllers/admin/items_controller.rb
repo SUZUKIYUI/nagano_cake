@@ -11,13 +11,19 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item=Item.new(item_params)
-    @genre=Genre.find(@item.genre_id)
-    @item.genre_id=@genre.id
+    @genres=Genre.all
+
+    if @item.genre_id
+      @genre=Genre.find(@item.genre_id)
+      @item.genre_id=@genre.id
+    end
+
     if @item.save
       redirect_to admin_item_path(@item.id)
     else
       render :new
     end
+
   end
 
   def show
@@ -31,13 +37,19 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item=Item.find(params[:id])
-    @genre=Genre.find(@item.genre_id)
-    @item.genre_id=@genre.id
+    @genres=Genre.all
+
+    if @item.genre_id
+      @genre=Genre.find(@item.genre_id)
+      @item.genre_id=@genre.id
+    end
+
     if @item.update(item_params)
       redirect_to admin_item_path(@item.id)
     else
       render :new
     end
+
   end
 
 # この下には何も記述しないこと！
