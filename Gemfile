@@ -69,7 +69,7 @@ gem "refile-mini_magick"
 gem 'enum_help'
 gem 'rails-i18n'
 
-gem 'kaminari','~> 1.2.1'
+gem 'kaminari'
 
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'

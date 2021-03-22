@@ -1,19 +1,35 @@
-<h1>商品一覧</h1>
+<div class="d-flex justify-content-between mb-5">
+  <h2 class="px-4 ml-3">商品一覧</h2>
+  <%= link_to  new_admin_item_path do %>
+    <button type="button" class="btn btn-light shadow bg-white rounded rounded-circle p-0" style="width:3rem;height:3rem;">＋</button>
+  <% end %>
+</div>
 
-<%= link_to "+", new_admin_item_path %>
-
-<p>商品ID</p>
-<p>商品名</p>
-<p>税抜価格</p>
-<p>ジャンル</p>
-<p>ステータス</p>
-
-<% @items.each do |item| %>
-  <%= item.id %>
-  <%= link_to "#{item.name}", admin_item_path(item.id) %>
-  <%= item.price %>
-  <%= item.genre.name %>
-  <%= item.is_active ? '販売中' : '販売停止中' %>
-<% end %>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= item.id %></td>
+            <td><%= link_to "#{item.name}", admin_item_path(item.id), class: "text-body" %></td>
+            <td><%= item.price.to_s(:delimited) %></td>
+            <td><%= item.genre.name %></td>
+            <td><%= item.is_active ? '販売中' : '販売停止中' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 <%= paginate @items %>
 <!--bootstrapで整える-->

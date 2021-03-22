@@ -1,3 +1,10 @@
 // Place all the styles related to the admin/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.table > thead > tr > th{
+    border-bottom:1px solid black;
+}
+.table > tbody > tr > td{
+    border-bottom:1px solid black;
+}
