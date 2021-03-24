@@ -2,7 +2,15 @@ Rails.application.routes.draw do
 
 # ------------------------会員側のルート---------------------------
 
-  devise_for :customers
+  # devise_for :customers
+
+  devise_scope :customers do
+    get "customers/sign_up" => "public/customers/registrations#new"
+    post "customers" =>"public/customers/registrations#create"
+    get "customers/sign_in" => "public/customers/sessions#new"
+    post "customers/sign_in" => "public/customers/sessions#create"
+    delete "customers/sign_out" => "public/customers/sessions#destroy"
+  end
 
   root to: 'public/homes#top'
   get 'about' => "public/homes#about"
