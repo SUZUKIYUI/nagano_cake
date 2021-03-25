@@ -3,13 +3,14 @@ Rails.application.routes.draw do
 # ------------------------会員側のルート---------------------------
 
   # devise_for :customers
-
-  devise_scope :customers do
-    get "customers/sign_up" => "public/customers/registrations#new"
-    post "customers" =>"public/customers/registrations#create"
-    get "customers/sign_in" => "public/customers/sessions#new"
-    post "customers/sign_in" => "public/customers/sessions#create"
-    delete "customers/sign_out" => "public/customers/sessions#destroy"
+  devise_for :customers, skip: :all
+  devise_scope :customer do
+    get "customers/sign_up" => "public/customers/registrations#new", as: :new_customer_registration
+    post "customers" =>"public/customers/registrations#create", as: :customer_registration
+    get "customers/sign_in" => "public/customers/sessions#new", as: :new_customer_session
+    post "customers/sign_in" => "public/customers/sessions#create", as: :customer_session
+    delete "customers/sign_out" => "public/customers/sessions#destroy", as: :destroy_customer_session
+    get 'customers/password/new' => 'public/customers/passwords#new', as: :new_customer_password
   end
 
   root to: 'public/homes#top'

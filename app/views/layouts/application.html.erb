@@ -13,7 +13,11 @@
   <body>
     <header>
       <%= link_to "LOGO", root_path %>
-      <% if admin_signed_in? %>
+      <% if customer_signed_in? %>
+
+        <div>カスタマー用</div>
+
+      <% elsif admin_signed_in? %>
         <ul>
           <li>
             <%= link_to "商品一覧", admin_items_path %>
@@ -31,10 +35,6 @@
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
           </li>
         </ul>
-      <% elsif customer_signed_in? %>
-
-        <div>カスタマー用</div>
-
       <% else %>
         <ul>
           <li>
