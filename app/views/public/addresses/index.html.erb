@@ -1,4 +1,16 @@
 <h2>配達先登録/一覧</h2>
+
+<!----------------------------エラーメッセージ-------------------------->
+<% if @address.errors.any? %>
+  <%= @address.errors.count %>件のエラー
+  <ul>
+    <% @address.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<!---------------------------------------------------------------------->
+
 <%= form_with model: @address, url: addresses_path, local: true do |f| %>
   <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
   <%= f.text_field :postal_code, placeholder: "0000000" %><br>
@@ -17,6 +29,6 @@
   <%= address.postal_code %>
   <%= address.address %>
   <%= address.name %>
-  <%= link_to "編集する", addresses_path(address.id) %>
-  <%= link_to "削除する", addresses_path(address.id), method: :delete %>
+  <%= link_to "編集する", edit_address_path(address.id) %>
+  <%= link_to "削除する", address_path(address.id), method: :delete %>
 <% end %>

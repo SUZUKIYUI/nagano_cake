@@ -47,10 +47,10 @@ Rails.application.routes.draw do
   get 'orders/:id' => "public/orders#show"
 
   get 'addresses' => "public/addresses#index"
-  get 'addresses/:id/edit' => "public/addresses#edit"
+  get 'addresses/:id/edit' => "public/addresses#edit", as: :edit_address
   post 'addresses' => "public/addresses#create"
   patch 'addresses/:id' => "public/addresses#update"
-  delete 'addresses/:id' => "public/addresses#destroy"
+  delete 'addresses/:id' => "public/addresses#destroy", as: :address
 
 
   # ------------------------お店側のルート--------------------------

@@ -33,3 +33,8 @@ ja:
         introduction: 商品説明
         price: 税抜価格
         is_active: 販売ステータス
+      # -------------------------
+      address:
+        name: 宛名
+        postal_code: 郵便番号
+        address: 住所
