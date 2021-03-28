@@ -25,32 +25,32 @@ Rails.application.routes.draw do
   get 'about' => "public/homes#about"
 
   get 'items' => "public/items#index"
-  get 'items/:id' => "public/items#show"
+  get 'items/:id' => "public/items#show", as: :item
 
-  get 'current_customer' => "public/customers#show"
-  get 'current_customer/edit' => "public/customers#edit"
+  get 'current_customer/edit' => "public/customers#edit", as: :edit_current_customer
+  get 'current_customer' => "public/customers#show", as: :current_customer
   patch 'current_customer' => "public/customers#update"
   get 'current_customer/leave' => "public/customers#leave"
   patch 'current_customer/withdraw' => "public/customers#withdraw"
 
   get 'cart_items' => "public/cart_items#index"
-  patch 'cart_items/:id' => "public/cart_items#update"
-  delete 'cart_items/:id' => "public/cart_items#destroy"
-  delete 'cart_items' => "public/cart_items#empty"
   post 'cart_items' => "public/cart_items#create"
+  delete 'cart_items' => "public/cart_items#empty"
+  patch 'cart_items/:id' => "public/cart_items#update", as: :cart_item
+  delete 'cart_items/:id' => "public/cart_items#destroy"
 
-  get 'orders/new' => "public/orders#new"
+  get 'orders' => "public/orders#index"
+  post 'orders' => "public/orders#create"
   post 'orders/check' => "public/orders#check"
   get 'orders/thanks' => "public/orders#thanks"
-  post 'orders' => "public/orders#create"
-  get 'orders' => "public/orders#index"
-  get 'orders/:id' => "public/orders#show"
+  get 'orders/new' => "public/orders#new", as: :new_order
+  get 'orders/:id' => "public/orders#show", as: :order
 
   get 'addresses' => "public/addresses#index"
-  get 'addresses/:id/edit' => "public/addresses#edit", as: :edit_address
   post 'addresses' => "public/addresses#create"
-  patch 'addresses/:id' => "public/addresses#update"
-  delete 'addresses/:id' => "public/addresses#destroy", as: :address
+  get 'addresses/:id/edit' => "public/addresses#edit", as: :edit_address
+  patch 'addresses/:id' => "public/addresses#update", as: :address
+  delete 'addresses/:id' => "public/addresses#destroy"
 
 
   # ------------------------お店側のルート--------------------------
