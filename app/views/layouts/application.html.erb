@@ -14,9 +14,21 @@
     <header>
       <%= link_to "LOGO", root_path %>
       <% if customer_signed_in? %>
-
-        <div>カスタマー用</div>
-
+        <p>ようこそ、<%= current_customer.last_name %>さん！</p>
+        <ul>
+          <li>
+            <%= link_to "マイページ", current_customer_path %>
+          </li>
+          <li>
+            <%= link_to "商品一覧", items_path %>
+          </li>
+          <li>
+            <%= link_to "カート", cart_items_path %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+          </li>
+        </ul>
       <% elsif admin_signed_in? %>
         <ul>
           <li>
