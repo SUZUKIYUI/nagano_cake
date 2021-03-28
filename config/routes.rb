@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
 # ------------------------会員側のルート---------------------------
 
-  # devise_for :customers
   devise_for :customers, skip: :all
   devise_scope :customer do
     get "customers/sign_up" => "public/customers/registrations#new", as: :new_customer_registration
@@ -11,6 +10,15 @@ Rails.application.routes.draw do
     post "customers/sign_in" => "public/customers/sessions#create", as: :customer_session
     delete "customers/sign_out" => "public/customers/sessions#destroy", as: :destroy_customer_session
     get 'customers/password/new' => 'public/customers/passwords#new', as: :new_customer_password
+    get "customers/password/edit" => "public/customers/passwords#edit", as: :edit_customer_password
+    patch "customers/password" => "public/customers/passwords#update", as: :customer_password
+    # put "customers/password" => "public/customers/passwords#update", as: :customer_password
+    # post "customers/password" => "public/customers/passwords#create", as: :customer_password
+    get "customers/cancel" => "public/customers/registrations#cancel", as: :cancel_customer_registration
+    get "customers/edit" => "public/customers/registrations#edit", as: :edit_customer_registration
+    # patch "customers" => "public/customers/registrations#update", as: :customer_registration
+    # put "customers" => "public/customers/registrations#update", as: :customer_registration
+    # delete "customers" => "public/customers/registrations#destroy", as: :customer_registration
   end
 
   root to: 'public/homes#top'

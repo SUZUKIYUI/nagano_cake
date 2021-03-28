@@ -2,5 +2,5 @@
 <% @items.each do |item| %>
   <%= attachment_image_tag item, :image, :fill, 100, 80 %>
   <%= item.name %>
-  ¥<%= item.price + item.price*0.1.floor %>
+  ¥<%= (item.price + item.price*0.1).floor %>
 <% end %>
