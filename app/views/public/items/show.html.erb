@@ -1,3 +1,14 @@
+<!-----------------エラーメッセージ------------------->
+<% if @cart_item.errors.any? %>
+  <%= @cart_item.errors.count %>件のエラー
+  <ul>
+    <% @cart_item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<!---------------------------------------------------->
+
 <%= attachment_image_tag @item, :image, :fill, 100, 150 %>
 
 <h2><%= @item.name %></h2>

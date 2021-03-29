@@ -2,6 +2,17 @@
 
 <%= link_to "カートを空にする", cart_items_path, method: :delete %>
 
+<!-----------------エラーメッセージ------------------->
+<% if @cart_item.errors.any? %>
+  <%= @cart_item.errors.count %>件のエラー
+  <ul>
+    <% @cart_item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<!---------------------------------------------------->
+
 <p>商品名</p>
 <p>単価(税込)</p>
 <p>数量</p>
@@ -11,12 +22,12 @@
   <%= attachment_image_tag cart_item.item, :image, :fill, 30, 20 %>
   <%= cart_item.item.name %>
   <%= (cart_item.item.price + cart_item.item.price*0.1).floor %>
-  <%= form_with model: cart_item, url: cart_items_path(cart_item.id), local: true do |f| %>
+  <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local: true do |f| %>
     <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10], include_blank: cart_item.amount %>
     <%= f.submit "変更" %>
   <% end %>
   <%= (cart_item.item.price + cart_item.item.price*0.1).floor * cart_item.amount %>
-  <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete %>
+  <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete %><br>
 <% end %>
 
 <%= link_to "買い物を続ける", root_path %>
