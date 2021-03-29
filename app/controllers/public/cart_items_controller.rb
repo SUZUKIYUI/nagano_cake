@@ -4,6 +4,17 @@ class Public::CartItemsController < ApplicationController
     @cart_items=CartItem.all
   end
 
+  def create
+    @cart_item=CartItem.new(cart_item_params)
+    @cart_item.customer_id=current_customer.id
+    @item=Item.find(@cart_item.item_id)
+    if @cart_item.save
+      redirect_to cart_items_path
+    else
+      render template: "public/items/show"
+    end
+  end
+
   def update
   end
 
@@ -13,15 +24,6 @@ class Public::CartItemsController < ApplicationController
   def empty
   end
 
-  def create
-    @cart_item=CartItem.new(cart_item_params)
-    @cart_item.customer_id=current_customer.id
-    if @cart_item.save
-      redirect_to cart_items_path
-    else
-      render template: "public/items/show"
-    end
-  end
 
   # この下に何も記述しないこと！
   private

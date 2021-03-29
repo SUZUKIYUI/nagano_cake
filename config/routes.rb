@@ -27,17 +27,17 @@ Rails.application.routes.draw do
   get 'items' => "public/items#index"
   get 'items/:id' => "public/items#show", as: :item
 
-  get 'current_customer/edit' => "public/customers#edit", as: :edit_current_customer
-  get 'current_customer' => "public/customers#show", as: :current_customer
-  patch 'current_customer' => "public/customers#update"
-  get 'current_customer/leave' => "public/customers#leave"
-  patch 'current_customer/withdraw' => "public/customers#withdraw"
-
   get 'cart_items' => "public/cart_items#index"
   post 'cart_items' => "public/cart_items#create"
   delete 'cart_items' => "public/cart_items#empty"
   patch 'cart_items/:id' => "public/cart_items#update", as: :cart_item
   delete 'cart_items/:id' => "public/cart_items#destroy"
+
+  get 'current_customer/edit' => "public/customers#edit", as: :edit_current_customer
+  get 'current_customer' => "public/customers#show", as: :current_customer
+  patch 'current_customer' => "public/customers#update"
+  get 'current_customer/leave' => "public/customers#leave"
+  patch 'current_customer/withdraw' => "public/customers#withdraw"
 
   get 'orders' => "public/orders#index"
   post 'orders' => "public/orders#create"
