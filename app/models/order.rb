@@ -3,6 +3,11 @@ class Order < ApplicationRecord
   has_many :order_items
   belongs_to :customer
 
+  validates :method_of_payment, presence: true
+  validates :delivery_postal_code, presence: true
+  validates :delivery_address, presence: true
+  validates :delivery_addressee, presence: true
+
   enum method_of_payment:{
     credit:0,
     bank:1,
