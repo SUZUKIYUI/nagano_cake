@@ -3,6 +3,13 @@ class Public::CartItemsController < ApplicationController
   def index
     @cart_items=CartItem.all
     @cart_item=CartItem.new
+
+    item_total_price = 0
+    @cart_items.each do |cart_item|
+      item_total_price += (cart_item.item.price + cart_item.item.price*0.1).floor * cart_item.amount
+    end
+    @item_total_price = item_total_price
+
   end
 
   def create

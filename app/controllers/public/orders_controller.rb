@@ -1,5 +1,8 @@
 class Public::OrdersController < ApplicationController
 
+  def index
+  end
+
   def new
     @order = Order.new
   end
@@ -42,17 +45,14 @@ class Public::OrdersController < ApplicationController
   end
   # ---------------------------------------------------------------------------------------------------------
 
-  def thanks
-  end
-
   def create
 
   end
 
-  def index
+  def show
   end
 
-  def show
+  def thanks
   end
 
   # この下に何も記述しないこと！

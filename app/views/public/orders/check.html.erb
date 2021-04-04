@@ -8,9 +8,9 @@
 <% @cart_items.each do |cart_item| %>
     <%= attachment_image_tag cart_item.item, :image, :fill, 30, 20 %>
     <%= cart_item.item.name %>
-    <%= (cart_item.item.price + cart_item.item.price*0.1).floor %>
+    <%= ((cart_item.item.price + cart_item.item.price*0.1).floor).to_s(:delimited) %>
     <%= cart_item.amount %>
-    <%= (cart_item.item.price + cart_item.item.price*0.1).floor * cart_item.amount %>
+    <%= ((cart_item.item.price + cart_item.item.price*0.1).floor * cart_item.amount).to_s(:delimited) %>
 <% end %>
 
 <p>送料</p>
@@ -18,8 +18,8 @@
 <p>請求金額</p>
 
 <%= @order.shipping_fee %>
-<%= @order.total_price - @order.shipping_fee %>
-<%= @order.total_price %>
+<%= (@order.total_price - @order.shipping_fee).to_s(:delimited) %>
+<%= @order.total_price.to_s(:delimited) %>
 
 
 
