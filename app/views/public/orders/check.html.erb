@@ -1,3 +1,8 @@
-<h1>Public::Orders#check</h1>
-<p>Find me in app/views/public/orders/check.html.erb</p>
+<h1>注文情報確認</h1>
+<p>支払方法</p>
+<%= @order.method_of_payment_i18n %>
+<p>お届け先</p>
 <%= @order.delivery_address %>
+<%= @order.delivery_addressee %>
+
+<%= link_to "注文を確定する", orders_path, method: :post %>
