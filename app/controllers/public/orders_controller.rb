@@ -3,15 +3,26 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
   end
-
+  # -------------------------------------------------------------------------------------------------------
   def check
     @order = Order.new
+    @cart_items = CartItem.all
+
+    # --------------------------------total_price------------------------------------
+    item_total_price = 0
+    @cart_items.each do |cart_item|
+      item_total_price += (cart_item.item.price + cart_item.item.price*0.1).floor * cart_item.amount
+    end
+    @order.total_price = item_total_price + @order.shipping_fee
+
+    # -------------method_of_payment-----------------
     if params[:order][:method_of_payment] == "credit"
       @order.method_of_payment = 0
     elsif params[:order][:method_of_payment] == "bank"
       @order.method_of_payment = 1
     end
 
+    # --------------delivery_postal_code/delivery_address/delivery_addressee--------------
     if params[:order][:address_select] == "my_address"
        # 『ご自身の住所』が選択された場合
       @order.delivery_address = current_customer.address
@@ -29,11 +40,13 @@ class Public::OrdersController < ApplicationController
     end
 
   end
+  # ---------------------------------------------------------------------------------------------------------
 
   def thanks
   end
 
   def create
+
   end
 
   def index

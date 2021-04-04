@@ -1,8 +1,33 @@
 <h1>注文情報確認</h1>
+
+<p>商品名</p>
+<p>単価（税込）</p>
+<p>数量</p>
+<p>小計</p>
+
+<% @cart_items.each do |cart_item| %>
+    <%= attachment_image_tag cart_item.item, :image, :fill, 30, 20 %>
+    <%= cart_item.item.name %>
+    <%= (cart_item.item.price + cart_item.item.price*0.1).floor %>
+    <%= cart_item.amount %>
+    <%= (cart_item.item.price + cart_item.item.price*0.1).floor * cart_item.amount %>
+<% end %>
+
+<p>送料</p>
+<p>商品合計</p>
+<p>請求金額</p>
+
+<%= @order.shipping_fee %>
+<%= @order.total_price - @order.shipping_fee %>
+<%= @order.total_price %>
+
+
+
 <p>支払方法</p>
 <%= @order.method_of_payment_i18n %>
 <p>お届け先</p>
-<%= @order.delivery_address %>
-<%= @order.delivery_addressee %>
+〒<%= @order.delivery_postal_code %>
+<%= @order.delivery_address %><br>
+<%= @order.delivery_addressee %><br>
 
 <%= link_to "注文を確定する", orders_path, method: :post %>
