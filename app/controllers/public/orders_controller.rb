@@ -39,14 +39,37 @@ class Public::OrdersController < ApplicationController
       @order.delivery_addressee = @address.name
     elsif params[:order][:address_select] == "new_address"
       # 『新しいお届け先』が選択された場合
-      @order = Order.new(order_params)
+      @order = Order.new(order_params_check)
     end
 
   end
   # ---------------------------------------------------------------------------------------------------------
 
   def create
+    @order=Order.new(order_params_create)
 
+    if params[:order][:method_of_payment] == "0"
+      @order.method_of_payment = 0
+    elsif params[:order][:method_of_payment] == "1"
+      @order.method_of_payment = 1
+    end
+
+    @order.customer_id = current_customer.id
+
+    if @order.save
+      @order_item = OrderItem.new
+      @order_item.order_id = @order.id
+      current_customer.cart_items.each do |cart_item|
+        @order_item.item_id = cart_item.item_id
+        @order_item.tax_included_price = (cart_item.item.price + cart_item.item.price*0.1).floor
+        @order_item.amount = cart_item.amount
+        @order_item.save
+      end
+      current_customer.cart_items.destroy
+      redirect_to orders_thanks_path
+    else
+      render :check
+    end
   end
 
   def show
@@ -58,8 +81,12 @@ class Public::OrdersController < ApplicationController
   # この下に何も記述しないこと！
   private
 
-  def order_params
+  def order_params_check
     params.require(:order).permit(:delivery_postal_code,:delivery_address, :delivery_addressee)
+  end
+
+  def order_params_create
+    params.require(:order).permit(:customer_id, :total_price, :delivery_postal_code, :delivery_address, :delivery_addressee)
   end
 
 end
