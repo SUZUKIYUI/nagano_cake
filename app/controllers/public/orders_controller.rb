@@ -1,6 +1,7 @@
 class Public::OrdersController < ApplicationController
 
   def index
+    @orders = Order.all
   end
 
   def new
@@ -60,12 +61,12 @@ class Public::OrdersController < ApplicationController
       @order_item = OrderItem.new
       @order_item.order_id = @order.id
       current_customer.cart_items.each do |cart_item|
-        @order_item.item_id = cart_item.item_id
+        @order_item.item_id = cart_item.item.id
         @order_item.tax_included_price = (cart_item.item.price + cart_item.item.price*0.1).floor
         @order_item.amount = cart_item.amount
         @order_item.save
       end
-      current_customer.cart_items.destroy
+      current_customer.cart_items.destroy_all
       redirect_to orders_thanks_path
     else
       render :check
