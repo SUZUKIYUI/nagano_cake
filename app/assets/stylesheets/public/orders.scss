@@ -1,3 +1,19 @@
 // Place all the styles related to the public/orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table, tr, th, td{
+  border: 1px solid black;
+}
+
+table{
+  width: 100%;
+}
+
+th, td{
+  padding: 10px 3px;
+}
+
+th{
+  background-color: #EEEEEE;
+}

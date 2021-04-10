@@ -1,12 +1,12 @@
 <div class="row">
-  <h2 class="px-3 py-0 text-center my-3 back-color">管理者ログイン</h2>
+  <h2 class="px-4 py-0 text-center my-3 back-color">管理者ログイン</h2>
 </div>
 <div class="row">
   <div class="col-md-8 m-auto">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field d-flex justify-content-between my-3">
         <%= f.label :email, "メールアドレス" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "sample@example.com", class: "col-md-8" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "col-md-8" %>
       </div>
 
       <div class="field d-flex justify-content-between mb-4">

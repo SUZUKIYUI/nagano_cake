@@ -73,10 +73,11 @@ class Public::OrdersController < ApplicationController
     end
   end
 
-  def show
+  def thanks
   end
 
-  def thanks
+  def show
+    @order = Order.find(params[:id])
   end
 
   # この下に何も記述しないこと！

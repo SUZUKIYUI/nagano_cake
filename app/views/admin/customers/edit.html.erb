@@ -1,8 +1,12 @@
-<h1><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h1>
+<div class="row">
+  <h2 class="px-4 py-0 text-center my-3 back-color">
+    <%= @customer.last_name + @customer.first_name %>さんの会員情報編集
+  </h2>
+</div>
 
 <p>会員ID</p>
 <%= @customer.id %>
-<%= form_with model:@customer, local: true do |f| %>
+<%= form_with model: @customer, url: admin_customer_path, local: true do |f| %>
 
   <%= f.label [:last_name, :first_name], "氏名" %>
   <%= f.text_field :last_name %>

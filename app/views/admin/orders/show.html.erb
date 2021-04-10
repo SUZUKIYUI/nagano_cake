@@ -1,4 +1,6 @@
-<h1>注文履歴詳細</h1>
+<div class="row">
+  <h2 class="px-4 py-0 text-center my-3 back-color">注文履歴詳細</h2>
+</div>
 
 <p>購入者</p>
 <%= link_to @order.customer.last_name + @order.customer.first_name, admin_customer_path(@order.customer.id) %>
@@ -12,11 +14,11 @@
 <%= @order.delivery_addressee %>
 
 <p>支払方法</p>
-<%= @order.method_of_payment %>
+<%= @order.method_of_payment_i18n %>
 
 <%= form_with model:@order, local: true do |f| %>
   <%= f.label :order_status, "注文ステータス" %>
-  <%= f.select(:order_status) %><br>
+  <%= "セレクトボックス" %><br>
   <%= f.submit "更新" %>
 <% end %>
 

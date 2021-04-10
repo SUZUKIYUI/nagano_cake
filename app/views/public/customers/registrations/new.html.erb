@@ -1,4 +1,6 @@
-<h2>新規会員登録</h2>
+<div class="row">
+  <h2 class="px-4 py-0 text-center my-3 back-color">新規会員登録</h2>
+</div>
 
 <%= form_with model: @customer, url: customer_registration_path, id: "new_customer", class: "new_customer", local: true do |f| %>
   <%= render "public/customers/shared/error_messages", resource: resource %>
@@ -60,5 +62,8 @@
   </div>
 <% end %>
 
-<h2>すでに登録済みの方</h2>
+
+<div class="row">
+  <h2 class="px-4 py-0 text-center my-3 back-color">既に登録済みの方</h2>
+</div>
 <%= link_to "こちら", new_customer_session_path %>からログインしてください

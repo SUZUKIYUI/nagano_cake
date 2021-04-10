@@ -1,4 +1,8 @@
-<h1><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h1>
+<div class="row">
+  <h2 class="px-4 py-0 text-center my-3 back-color">
+    <%= @customer.last_name + @customer.first_name %>さんの会員詳細
+  </h2>
+</div>
 
 <p>会員ID</p>
 <%= @customer.id %>
@@ -12,13 +16,13 @@
 <%= @customer.address %>
 <p>電話番号</p>
 <%= @customer.telephone_number %>
-<p>メールアドレス</p>jh
+<p>メールアドレス</p>
 <%= @customer.email %>
 <p>会員ステータス</p>
 <%= @customer.is_deleted %>
 
 
-<%= link_to "編集する", edit_admin_customer(@customer.id) %>
+<%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
 <%= link_to "注文履歴一覧を見る", admin_root_path(@customer.id) %>
 
 <!--bootstrapで整える-->
