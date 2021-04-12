@@ -1,18 +1,38 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.back-cake{
+
+.back-cake-top{
   height: 430px;
   background-image: url(https://static.amanaimages.com/imgroom/rf_preview640/20013/20013008770.jpg);
   background-size: cover;
   background-position: center;
 }
-.white-color{
+
+.top-text{
   color: #DDFFFF;
   margin-top: 150px;
   font-size: 20px;
 }
+
 .btn-blue{
   text-decoration: underline;
   color: blue;
+}
+
+.about-title{
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.back-cake-about{
+  background-image: url(https://pictkan.com/uploads/cache/2095723873/bake-170437_1920-400x270-MM-100.jpg);
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+}
+
+.about-text{
+  font-size: 20px;
+  margin-bottom: 20px;
 }
