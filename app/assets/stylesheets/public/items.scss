@@ -1,3 +1,13 @@
 // Place all the styles related to the public/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.bold-font{
+  font-weight: bold;
+}
+.price{
+  font-size: 25px;
+}
+select{
+  width: 30%;
+  border-radius: 5px;
+}
