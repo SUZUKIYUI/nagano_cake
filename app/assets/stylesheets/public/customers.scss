@@ -1,10 +1,16 @@
 // Place all the styles related to the public/customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 .font-small{
-  font-size: 25px;
+  font-size: 20px;
 }
 
-.font-small-2{
-  font-size: 20px;
+.ml-30{
+  margin-left: 30%;
+}
+
+.link-blue{
+  color: blue;
+  text-decoration: underline;
 }
