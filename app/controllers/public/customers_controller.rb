@@ -13,8 +13,10 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
-    current_customer.is_deleted=true
-    redirect_to root_path
+    current_customer.is_deleted = true
+    if current_customer.update
+      redirect_to root_path
+    end
   end
 
 end
