@@ -41,3 +41,16 @@ ja:
       # -------------------------
       cart_item:
         amount: 個数
+      # -------------------------
+      customer:
+        last_name: 姓
+        first_name: 名
+        last_name_kana: 姓カナ
+        first_name_kana: 名カナ
+        email: メールアドレス
+        encrypted_password: パスワード
+        postal_code: 郵便番号
+        address: 住所
+        telephone_number: 電話番号
+        is_deleted: 退会ステータス
+
