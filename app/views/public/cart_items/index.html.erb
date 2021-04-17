@@ -1,5 +1,5 @@
-<div class="row d-flex justify-content-between align-items-center mb-4">
-  <h2 class="px-4 py-0 text-center my-3 back-color">ショッピングカート</h2>
+<div class="row mb-4 d-flex justify-content-between align-items-center">
+  <h2 class="px-4 py-0 ml-5 my-3 text-center back-color">ショッピングカート</h2>
   <%= link_to "カートを空にする", cart_items_path, method: :delete, class: "btn btn-danger px-4" %>
 </div>
 
@@ -56,8 +56,8 @@
   <%= link_to "買い物を続ける", root_path, class: "btn btn-primary px-4 ml-5" %>
   <table class="col-md-3">
     <tr>
-      <th>合計金額</th>
-      <td><%= @item_total_price.to_s(:delimited) %></td>
+      <th class="wid-15">合計金額</th>
+      <td class="wid-15"><%= @item_total_price.to_s(:delimited) %></td>
     </tr>
   </table>
 </div>
