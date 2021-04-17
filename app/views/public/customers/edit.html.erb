@@ -1,23 +1,47 @@
-<div class="row">
+<div class="row wid-80 mx-auto">
   <h2 class="px-4 py-0 text-center my-3 back-color">会員情報編集</h2>
 </div>
 
-<%= form_with model: current_customer, url: current_customer_path, local: true do |f| %>
-  <%= f.label [:last_name, :first_name], "氏名" %>
-  <%= f.text_field :last_name %>
-  <%= f.text_field :first_name %><br>
-  <%= f.label [:last_name_kana, :first_name_kana], "フリガナ" %>
-  <%= f.text_field :last_name_kana %>
-  <%= f.text_field :first_name_kana %><br>
-  <%= f.label :postal_code, "郵便番号" %>
-  <%= f.text_field :postal_code %><br>
-  <%= f.label :address, "住所" %>
-  <%= f.text_field :address %><br>
-  <%= f.label :telephone_number, "電話番号" %>
-  <%= f.text_field :telephone_number %><br>
-  <%= f.label :email, "メールアドレス" %>
-  <%= f.text_field :email %><br>
-  <%= f.submit "編集内容を保存" %>
+<!-------------------------エラーメッセージ----------------------->
+<% if current_customer.errors.any? %>
+  <%= current_customer.errors.count %>件のエラー
+  <ul>
+    <% current_customer.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
 <% end %>
+<!--------------------------------------------------------------->
 
-<%= link_to "退会する", current_customer_leave_path %>
+<%= form_with model: current_customer, url: current_customer_path, local: true do |f| %>
+  <div class="mt-4 mb-1">
+    <%= f.label [:last_name, :first_name], "氏名", class: "wid-16" %>
+    <%= f.text_field :last_name %>
+    <%= f.text_field :first_name, class: "ml-4" %>
+  </div>
+  <div class="mb-1">
+    <%= f.label [:last_name_kana, :first_name_kana], "フリガナ", class: "wid-16" %>
+    <%= f.text_field :last_name_kana %>
+    <%= f.text_field :first_name_kana, class: "ml-4" %>
+  </div>
+  <div class="mb-1">
+    <%= f.label :postal_code, "郵便番号", class: "wid-16" %>
+    <%= f.text_field :postal_code %>
+  </div>
+  <div class="mb-1">
+    <%= f.label :address, "住所", class: "wid-16" %>
+    <%= f.text_field :address, class: "wid-50" %>
+  </div>
+  <div class="mb-1">
+    <%= f.label :telephone_number, "電話番号", class: "wid-16" %>
+    <%= f.text_field :telephone_number %>
+  </div>
+  <div>
+    <%= f.label :email, "メールアドレス", class: "wid-16" %>
+    <%= f.text_field :email, class: "wid-24" %>
+  </div>
+  <div class="d-flex justify-content-between wid-68 mx-auto mt-3">
+    <%= f.submit "編集内容を保存", class: "btn btn-success px-4" %>
+    <%= link_to "退会する", current_customer_leave_path, class: "btn btn-danger px-4" %>
+  </div>
+<% end %>
