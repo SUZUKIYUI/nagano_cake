@@ -1,9 +1,8 @@
-<div class="row">
-  <h2 class="px-4 py-0 text-center my-3 back-color">商品詳細</h2>
+<div class="row wid-80 mx-auto mb-5">
+  <h2 class="px-4 py-0 text-center my-3 back-color">注文履歴一覧</h2>
 </div>
-<h2>注文履歴一覧</h2>
 
-<table class="table">
+<table>
   <thead>
     <tr>
       <th>注文日</th>
@@ -22,7 +21,8 @@
         </td>
         <td>
           〒<%= order.delivery_postal_code %><br>
-          <%= order.delivery_address %>
+          <%= order.delivery_address %><br>
+          <%= order.customer.last_name + order.customer.first_name %>
         </td>
         <td>
           <% order.order_items.each do |order_item| %>
@@ -30,13 +30,13 @@
           <% end %>
         </td>
         <td>
-          <%= order.total_price %>
+          <%= order.total_price %>円
         </td>
         <td>
           <%= order.order_status_i18n %>
         </td>
-        <td>
-          <%= link_to "表示する", order_path(order.id) %>
+        <td class="text-center">
+          <%= link_to "表示する", order_path(order.id), class: "btn btn-primary px-2 py-1" %>
         </td>
       </tr>
     <% end %>
