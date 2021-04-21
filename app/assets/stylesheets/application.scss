@@ -35,6 +35,26 @@
   border: none;
 }
 
+.header-logo{
+    font-family: "Comic Sans MS";
+    font-size: 30px;
+}
+
+.nav-text{
+    margin: 0 15px;
+}
+
+.nav-item-link{
+    margin: 0 10px;
+    padding: 3px 5px;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+}
+
+.nav-item-link:hover{
+    text-decoration: none;
+}
+
 .wid-100{
   width: 100%;
 }
