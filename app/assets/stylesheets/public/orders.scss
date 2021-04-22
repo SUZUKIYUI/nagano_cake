@@ -2,10 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-table, tr, th, td{
-  border: 1px solid black;
-}
-
 table{
   width: 100%;
 }
@@ -18,9 +14,7 @@ th{
   background-color: #EEEEEE;
 }
 
-.normal{
-  font-weight: normal;
-}
+
 
 .bold{
   font-weight: bold;

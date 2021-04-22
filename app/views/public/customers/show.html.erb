@@ -7,30 +7,30 @@
     <%= link_to "編集する", edit_current_customer_path, class: "btn btn-success px-4" %>
 </div>
 
-<table class="wid-80">
+<table class="border-table wid-80">
     <tr>
-        <th>氏名</th>
-        <td><%= current_customer.last_name %><span class="ml-3"></span><%= current_customer.first_name %></td>
+        <th class="border-table">氏名</th>
+        <td class="border-table"><%= current_customer.last_name %><span class="ml-3"></span><%= current_customer.first_name %></td>
     </tr>
     <tr>
-        <th>カナ</th>
-        <td><%= current_customer.last_name_kana %><span class="ml-3"></span><%= current_customer.first_name_kana %></td>
+        <th class="border-table">カナ</th>
+        <td class="border-table"><%= current_customer.last_name_kana %><span class="ml-3"></span><%= current_customer.first_name_kana %></td>
     </tr>
     <tr>
-        <th>郵便番号</th>
-        <td><%= current_customer.postal_code %></td>
+        <th class="border-table">郵便番号</th>
+        <td class="border-table"><%= current_customer.postal_code %></td>
     </tr>
     <tr>
-        <th>住所</th>
-        <td><%= current_customer.address %></td>
+        <th class="border-table">住所</th>
+        <td class="border-table"><%= current_customer.address %></td>
     </tr>
     <tr>
-        <th>電話番号</th>
-        <td><%= current_customer.telephone_number %></td>
+        <th class="border-table">電話番号</th>
+        <td class="border-table"><%= current_customer.telephone_number %></td>
     </tr>
     <tr>
-        <th>メールアドレス</th>
-        <td><%= current_customer.email %></td>
+        <th class="border-table">メールアドレス</th>
+        <td class="border-table"><%= current_customer.email %></td>
     </tr>
 </table>
 

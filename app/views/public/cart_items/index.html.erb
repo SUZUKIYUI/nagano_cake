@@ -14,36 +14,36 @@
 <% end %>
 <!--------------------------------------------------------->
 <div class="row">
-  <table>
+  <table class="border-table">
     <thead>
       <tr>
-        <th class="wid-40">商品名</th>
-        <th class="wid-15">単価(税込)</th>
-        <th class="wid-15">数量</th>
-        <th class="wid-15">小計</th>
-        <th class="wid-15"></th>
+        <th class="border-table wid-40">商品名</th>
+        <th class="border-table wid-15">単価(税込)</th>
+        <th class="border-table wid-15">数量</th>
+        <th class="border-table wid-15">小計</th>
+        <th class="border-table wid-15"></th>
       </tr>
     </thead>
     <tbody>
       <% @cart_items.each do |cart_item| %>
         <tr>
-          <td class="align-middle wid-40">
+          <td class="border-table align-middle wid-40">
             <%= attachment_image_tag cart_item.item, :image, :fill, 90, 60 %>
             <%= cart_item.item.name %>
           </td>
-          <td class="align-middle wid-15">
+          <td class="border-table align-middle wid-15">
             <%= ((cart_item.item.price + cart_item.item.price*0.1).floor).to_s(:delimited) %>
           </td>
           <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local: true do |f| %>
-            <td class="align-middle text-center wid-15">
+            <td class="border-table align-middle text-center wid-15">
               <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10], include_blank: cart_item.amount %>
               <%= f.submit "変更", class: "btn btn-success ml-3" %>
             </td>
           <% end %>
-          <td class="align-middle wid-15">
+          <td class="border-table align-middle wid-15">
             <%= ((cart_item.item.price + cart_item.item.price*0.1).floor * cart_item.amount).to_s(:delimited) %>
           </td>
-          <td class="align-middle text-center wid-15">
+          <td class="border-table align-middle text-center wid-15">
             <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger px-4" %>
           </td>
         </tr>
@@ -54,10 +54,10 @@
 
 <div class="row d-flex justify-content-between align-items-center mt-4">
   <%= link_to "買い物を続ける", root_path, class: "btn btn-primary px-4 ml-5" %>
-  <table class="col-md-3">
-    <tr>
-      <th class="wid-15">合計金額</th>
-      <td class="wid-15"><%= @item_total_price.to_s(:delimited) %></td>
+  <table class="border-table col-md-3">
+    <tr class="border-table">
+      <th class="border-table wid-15">合計金額</th>
+      <td class="border-table wid-15"><%= @item_total_price.to_s(:delimited) %></td>
     </tr>
   </table>
 </div>

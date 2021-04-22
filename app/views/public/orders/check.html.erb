@@ -4,29 +4,29 @@
 
 
 <div class="row d-flex justify-content-between">
-    <table class="col-md-8">
+    <table class="border-table col-md-8">
         <thead>
             <tr>
-                <th class="wid-52">商品名</th>
-                <th class="wid-16">単価（税込）</th>
-                <th class="wid-16">数量</th>
-                <th class="wid-16">小計</th>
+                <th class="border-table wid-52">商品名</th>
+                <th class="border-table wid-16">単価（税込）</th>
+                <th class="border-table wid-16">数量</th>
+                <th class="border-table wid-16">小計</th>
             </tr>
         </thead>
         <tbody>
             <% @cart_items.each do |cart_item| %>
                 <tr>
-                    <td>
+                    <td class="border-table">
                         <%= attachment_image_tag cart_item.item, :image, :fill, 60, 40 %>
                         <span class="mx-1"></span><%= cart_item.item.name %>
                     </td>
-                    <td>
+                    <td class="border-table">
                         <%= ((cart_item.item.price + cart_item.item.price*0.1).floor).to_s(:delimited) %>
                     </td>
-                    <td>
+                    <td class="border-table">
                         <%= cart_item.amount %>
                     </td>
-                    <td>
+                    <td class="border-table">
                         <%= ((cart_item.item.price + cart_item.item.price*0.1).floor * cart_item.amount).to_s(:delimited) %>
                     </td>
                 </tr>
@@ -34,18 +34,18 @@
         </tbody>
     </table>
 
-    <table class="col-md-3">
+    <table class="border-table col-md-3">
         <tr class="wid-100">
-            <th class="wid-50">送料</th>
-            <td class="wid-50"><%= @order.shipping_fee %></td>
+            <th class="border-table wid-50">送料</th>
+            <td class="border-table wid-50"><%= @order.shipping_fee %></td>
         </tr>
         <tr>
-            <th class="wid-50">商品合計</th>
-            <td class="wid-50"><%= (@order.total_price - @order.shipping_fee).to_s(:delimited) %></td>
+            <th class="border-table wid-50">商品合計</th>
+            <td class="border-table wid-50"><%= (@order.total_price - @order.shipping_fee).to_s(:delimited) %></td>
         </tr>
         <tr>
-            <th class="wid-50">請求金額</th>
-            <td class="wid-50"><%= @order.total_price.to_s(:delimited) %></td>
+            <th class="border-table wid-50">請求金額</th>
+            <td class="border-table wid-50"><%= @order.total_price.to_s(:delimited) %></td>
         </tr>
     </table>
 </div>
