@@ -1,5 +1,5 @@
-<div class="d-flex justify-content-between mb-5">
-  <h2 class="px-4 ml-3 back-color">商品一覧</h2>
+<div class="d-flex justify-content-between wid-90 ml-auto mb-5">
+  <h2 class="px-4 back-color">商品一覧</h2>
   <%= link_to new_admin_item_path do %>
     <button type="button" class="btn btn-light shadow bg-white rounded rounded-circle p-0" style="width:3rem;height:3rem;">＋</button>
   <% end %>
@@ -7,7 +7,7 @@
 
 <table class="table">
   <thead>
-    <tr>
+    <tr class="border-bottom-table">
       <th>商品ID</th>
       <th>商品名</th>
       <th>税抜価格</th>
@@ -17,12 +17,12 @@
   </thead>
   <tbody>
     <% @items.each do |item| %>
-      <tr>
-        <td><%= item.id %></td>
-        <td><%= link_to "#{item.name}", admin_item_path(item.id), class: "text-body" %></td>
-        <td><%= item.price.to_s(:delimited) %></td>
-        <td><%= item.genre.name %></td>
-        <td><%= item.is_active ? '販売中' : '販売停止中' %></td>
+      <tr class="border-bottom-table">
+        <td class="border-bottom-table"><%= item.id %></td>
+        <td class="border-bottom-table"><%= link_to "#{item.name}", admin_item_path(item.id), class: "text-underline" %></td>
+        <td class="border-bottom-table"><%= item.price.to_s(:delimited) %></td>
+        <td class="border-bottom-table"><%= item.genre.name %></td>
+        <td class="border-bottom-table"><%= item.is_active ? '販売中' : '販売停止中' %></td>
       </tr>
     <% end %>
   </tbody>
