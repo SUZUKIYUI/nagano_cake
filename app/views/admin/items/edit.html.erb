@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row wid-80 mx-auto mb-5">
   <h2 class="px-4 py-0 text-center my-3 back-color">商品編集</h2>
 </div>
 
@@ -12,24 +12,34 @@
   </ul>
 <% end %>
 <!---------------------------------------------------->
-
-<%= form_with model:@item, url:admin_item_path(@item.id), local: true do |f| %>
-  <%= f.label :image, "商品画像" %>
-  <%= f.attachment_field :image %><br>
-  <%= f.label :name, "商品名" %>
-  <%= f.text_field :name, placeholder: "商品名" %><br>
-  <%= f.label :introduction, "商品説明" %>
-  <%= f.text_area :introduction, placeholder: "ここに説明文を記述します" %><br>
-  <%= f.label :genre_id, "ジャンル" %>
-  <%= f.collection_select(:genre_id, @genres, :id, :name, {selected: :genre_id}) %><br>
-  <%= f.label :proce, "税抜価格" %>
-  <%= f.text_field :price, placeholder: "1000" %><span>円</span><br>
-  <%= f.label :is_active, "販売ステータス" %>
-  <%= f.radio_button :is_active, "販売中", checked: true %>販売中 <%= f.radio_button :is_active, "販売停止中" %>販売停止中<br>
-  <%= f.submit "編集を保存" %>
-<% end %>
-
-<!--bootstrapで整える-->
-<!--未入力の項目があればはじき返す-->
-<!--エラー文の表示-->
-<!--ジャンル選択の修正-->
+<div class="wid-50 mx-auto">
+  <%= form_with model:@item, url:admin_item_path(@item.id), local: true do |f| %>
+    <div class="my-2">
+      <%= f.label :image, "商品画像", class: "wid-30" %>
+      <%= f.attachment_field :image, class: "wid-60" %>
+    </div>
+    <div class="my-2">
+      <%= f.label :name, "商品名", class: "wid-30" %>
+      <%= f.text_field :name, placeholder: "商品名", class: "wid-60" %>
+    </div>
+    <div class="my-2">
+      <%= f.label :introduction, "商品説明", class: "wid-30" %>
+      <%= f.text_area :introduction, placeholder: "ここに説明文を記述します", class: "wid-60" %>
+    </div>
+    <div class="my-2">
+      <%= f.label :genre_id, "ジャンル", class: "wid-30" %>
+      <%= f.collection_select(:genre_id, @genres, :id, :name, {selected: :genre_id}, {class: "wid-60"}) %>
+    </div>
+    <div class="my-2">
+      <%= f.label :proce, "税抜価格", class: "wid-30" %>
+      <%= f.text_field :price, placeholder: "1000", class: "wid-60" %><span class="ml-1">円</span>
+    </div>
+    <div class="my-2">
+      <%= f.label :is_active, "販売ステータス", class: "wid-30" %>
+      <%= f.radio_button :is_active, "販売中", checked: true %>販売中 <%= f.radio_button :is_active, "販売停止中", class: "ml-4" %>販売停止中
+    </div>
+    <div class="text-center">
+      <%= f.submit "編集を保存", class: "btn btn-success px-4 mt-2" %>
+    </div>
+  <% end %>
+</div>
