@@ -19,6 +19,11 @@ ja:
         waiting_for_production: "制作待ち"
         in_production: "製作中"
         production_completed: "制作完了"
+    # ----------------------------------
+    customer:
+      is_deleted:
+        effective: "有効"
+        withdrawal: "退会"
   #-------------------------------------
 
   activerecord:

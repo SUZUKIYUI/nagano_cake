@@ -18,4 +18,6 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   validates :telephone_number, presence: true
 
+  enum is_deleted: {effective: false, withdrawal: true}
+
 end
