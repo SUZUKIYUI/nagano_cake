@@ -1,28 +1,36 @@
-<div class="row">
+<div class="row wid-80 mx-auto mb-2">
   <h2 class="px-4 py-0 text-center my-3 back-color">注文履歴一覧</h2>
 </div>
 
-<p>購入日時</p>
-<p>購入者</p>
-<p>注文個数</p>
-<p>注文ステータス</p>
+<table class="table wid-80 mx-auto">
+  <thead>
+    <tr>
+      <th>購入日時</th>
+      <th>購入者</th>
+      <th>注文個数</th>
+      <th>注文ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td>
+          <%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order.id), class: "text-underline" %>
+        </td>
+        <td>
+          <%= order.customer.last_name + order.customer.first_name %>
+        </td>
+        <td>
+          <%= order.order_items.amount %>
+        </td>
+        <td>
+          <%= order.order_status_i18n %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<% if @one_person_orders %>
-  <% @one_person_orders.each do |order| %>
-    <%= link_to order.created_at.strftime('%Y/%M/%D/%H/%M/%S'), admin_order_path(order.id) %>
-    <%= order.customer.last_name + order.customer.first_name %>
-    <%= order.order_items.amount %>
-    <%= order.order_status_i18n %>
-  <% end %>
-<% else %>
-  <% @orders.each do |order| %>
-    <%= link_to order.created_at.strftime('%Y/%M/%D/%H/%M/%S'), admin_order_path(order.id) %>
-    <%= order.customer.last_name + order.customer.first_name %>
-    <%= "数" %>
-    <%= order.order_status_i18n %>
-  <% end %>
-<% end %>
+<%= paginate @orders %>
 
-<!--bootstrapで整える-->
-<!--項目が多い場合に次のページに表示されるようにする-->
 <!--一会員と全会員の表示分けができているかチェック-->
