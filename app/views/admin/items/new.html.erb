@@ -12,7 +12,7 @@
 <% end %>
 <!---------------------------------------------------->
 <div class="wid-52 mx-auto">
-  <%= form_with model:@item, url:admin_items_path, local: true do |f| %>
+  <%= form_with model: @item, url: admin_items_path, local: true do |f| %>
     <div class="d-flex my-2">
       <%= f.label :image, "商品画像", class: "wid-25" %>
       <%= f.attachment_field :image, class: "wid-68" %>
@@ -33,9 +33,16 @@
       <%= f.label :proce, "税抜価格", class: "wid-25" %>
       <%= f.text_field :price, placeholder: "1000", class: "wid-68" %><span class="ml-1">円</span>
     </div>
-    <div class="my-2">
+    <div class="d-flex my-2">
       <%= f.label :is_active, "販売ステータス", class: "wid-25" %>
-      <%= f.radio_button :is_active, "販売中", checked: true %>販売中 <%= f.radio_button :is_active, "販売停止中",class: "ml-4" %>販売停止中
+      <div>
+        <%= f.radio_button :is_active, true, checked: true %>
+        <%= f.label :is_active, "販売中", value: true %>
+      </div>
+      <div class="ml-4">
+        <%= f.radio_button :is_active, false %>
+        <%= f.label :is_active, "販売停止中", value: false %>
+      </div>
     </div>
     <div class="text-center mt-4">
       <%= f.submit "新規登録", class: "btn btn-success px-4 py-2" %>
