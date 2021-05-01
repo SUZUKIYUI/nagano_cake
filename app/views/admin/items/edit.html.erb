@@ -14,23 +14,23 @@
 <!---------------------------------------------------->
 <div class="wid-50 mx-auto">
   <%= form_with model:@item, url:admin_item_path(@item.id), local: true do |f| %>
-    <div class="my-2">
+    <div class="d-flex my-2">
       <%= f.label :image, "商品画像", class: "wid-30" %>
       <%= f.attachment_field :image, class: "wid-60" %>
     </div>
-    <div class="my-2">
+    <div class="d-flex my-2">
       <%= f.label :name, "商品名", class: "wid-30" %>
       <%= f.text_field :name, placeholder: "商品名", class: "wid-60" %>
     </div>
-    <div class="my-2">
+    <div class="d-flex align-items-baseline my-2">
       <%= f.label :introduction, "商品説明", class: "wid-30" %>
       <%= f.text_area :introduction, placeholder: "ここに説明文を記述します", class: "wid-60" %>
     </div>
-    <div class="my-2">
+    <div class="d-flex my-2">
       <%= f.label :genre_id, "ジャンル", class: "wid-30" %>
       <%= f.collection_select(:genre_id, @genres, :id, :name, {selected: :genre_id}, {class: "wid-60"}) %>
     </div>
-    <div class="my-2">
+    <div class="d-flex align-items-baseline my-2">
       <%= f.label :proce, "税抜価格", class: "wid-30" %>
       <%= f.text_field :price, placeholder: "1000", class: "wid-60" %><span class="ml-1">円</span>
     </div>

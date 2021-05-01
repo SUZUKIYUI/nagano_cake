@@ -13,27 +13,27 @@
 <!---------------------------------------------------->
 <div class="wid-52 mx-auto">
   <%= form_with model:@item, url:admin_items_path, local: true do |f| %>
-    <div class="my-1">
+    <div class="d-flex my-2">
       <%= f.label :image, "商品画像", class: "wid-25" %>
       <%= f.attachment_field :image, class: "wid-68" %>
     </div>
-    <div class="my-1">
+    <div class="d-flex my-2">
       <%= f.label :name, "商品名", class: "wid-25" %>
       <%= f.text_field :name, placeholder: "商品名", class: "wid-68" %>
     </div>
-    <div class="my-1">
+    <div class="d-flex align-items-baseline my-1">
       <%= f.label :introduction, "商品説明", class: "wid-25" %>
       <%= f.text_area :introduction, placeholder: "ここに説明文を記述します", class: "wid-68" %>
     </div>
-    <div class="my-1">
+    <div class="d-flex my-2">
       <%= f.label :genre_id, "ジャンル", class: "wid-25" %>
       <%= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "--選択して下さい--"}, {class: "wid-68"}) %>
     </div>
-    <div class="my-1">
+    <div class="d-flex align-items-baseline my-2">
       <%= f.label :proce, "税抜価格", class: "wid-25" %>
       <%= f.text_field :price, placeholder: "1000", class: "wid-68" %><span class="ml-1">円</span>
     </div>
-    <div class="my-1">
+    <div class="my-2">
       <%= f.label :is_active, "販売ステータス", class: "wid-25" %>
       <%= f.radio_button :is_active, "販売中", checked: true %>販売中 <%= f.radio_button :is_active, "販売停止中",class: "ml-4" %>販売停止中
     </div>
