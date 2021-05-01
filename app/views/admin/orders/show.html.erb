@@ -1,55 +1,88 @@
-<div class="row">
+<div class="row wid-80 mx-auto mb-2">
   <h2 class="px-4 py-0 text-center my-3 back-color">注文履歴詳細</h2>
 </div>
-
-<p>購入者</p>
-<%= link_to @order.customer.last_name + @order.customer.first_name, admin_customer_path(@order.customer.id) %>
-
-<p>注文日</p>
-<%= @order.created_at.strftime('%Y/%M/%D') %>
-
-<p>配達先</p>
-<span>〒</span><%= @order.delivery_postal_code %>
-<%= @order.delivery_address %>
-<%= @order.delivery_addressee %>
-
-<p>支払方法</p>
-<%= @order.method_of_payment_i18n %>
-
+<div class="d-flex my-2">
+  <p class="wid-16 font-bold">購入者</p>
+  <%= link_to @order.customer.last_name + @order.customer.first_name, admin_customer_path(@order.customer.id), class: "text-underline" %>
+</div>
+<div class="d-flex my-2">
+  <p class="wid-16 font-bold">注文日</p>
+  <%= @order.created_at.strftime('%Y/%m/%d') %>
+</div>
+<div class="d-flex my-2">
+  <p class="wid-16 font-bold">配達先</p>
+  〒<%= @order.delivery_postal_code %>
+  <%= @order.delivery_address %><br>
+  <%= @order.delivery_addressee %>
+</div>
+<div class="d-flex my-2">
+  <p class="wid-16 font-bold">支払方法</p>
+  <%= @order.method_of_payment_i18n %>
+</div>
 <%= form_with model:@order, local: true do |f| %>
-  <%= f.label :order_status, "注文ステータス" %>
-  <%= "セレクトボックス" %><br>
-  <%= f.submit "更新" %>
+  <div class="d-flex my-2 align-items-baseline">
+    <%= f.label :order_status, "注文ステータス", class: "wid-16 font-bold" %>
+    <%= f.select :order_status, [["入金待ち", 0], ["入金確認", 1], ["製作中", 2], ["発送準備中", 3], ["発送済み", 4]], {}, {class: "wid-15"} %>
+    <%= f.submit "更新", class: "btn btn-success px-2 ml-5" %>
+  </div>
 <% end %>
 
 <!------------------------------------------------------------------>
+<div class="row d-flex justify-content-between">
 
-<p>商品名</p>
-<p>単価（税込）</p>
-<p>数量</p>
-<p>小計</p>
-<p>製作ステータス</p>
-
-<% @order_items.each do |order_item| %>
-  <%= order_item.item.name %>
-  <%= order_item.tax_included_price %>
-  <%= order_item.amount %>
-  <%= order_item.tax_included_price * order_item.amount %>
-  <%= form_with model:order_item, url:admin_order_order_item_path(order_item), local: true do |f| %>
-    <%= f.select(:production_status) %>
-    <%= f.submit "更新" %>
-  <% end %>
-<% end %>
-
-<!----------------------------------------------------------------->
-
-<p>商品合計</p>
-<%= @order.total_price - @order.shipping_fee %><span>円</span>
-
-<p>送料</p>
-<%= @order.shipping_fee %><span>円</span>
-
-<p>請求金額合計</p>
-<%= @order.total_price %><span>円</span>
-
-<!--bootstrapで整える-->
+  <div class="col-md-8">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>製作ステータス</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.order_items.each do |order_item| %>
+          <tr>
+            <td>
+              <%= order_item.item.name %>
+            </td>
+            <td>
+              <%= order_item.tax_included_price.to_s(:delimited) %>
+            </td>
+            <td>
+              <%= order_item.amount %>
+            </td>
+            <td>
+              <%= (order_item.tax_included_price * order_item.amount).to_s(:delimited) %>
+            </td>
+            <%= form_with model: order_item, url: admin_order_order_item_path(order_item), local: true do |f| %>
+              <td>
+                <%= f.select :production_status, [["着手不可", 0], ["制作待ち", 1], ["製作中", 2], ["制作完了", 3]], {}, {class: "wid-100"} %>
+              </td>
+              <td>
+                <%= f.submit "更新", class: "btn btn-success px-2" %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+    <!----------------------------------------------------------------->
+  <div class="col-md-3">
+    <div class="d-flex">
+      <p class="wid-60 font-bold">商品合計</p>
+      <%= "#{(@order.total_price - @order.shipping_fee).to_s(:delimited)}円" %>
+    </div>
+    <div class="d-flex">
+      <p class="wid-60 font-bold">送料</p>
+      <%= "#{@order.shipping_fee}円" %>
+    </div>
+    <div class="d-flex font-bold">
+      <p class="wid-60">請求金額合計</p>
+      <%= "#{@order.total_price.to_s(:delimited)}円" %>
+    </div>
+  </div>
+</div>

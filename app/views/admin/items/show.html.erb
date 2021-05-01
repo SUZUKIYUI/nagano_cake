@@ -30,7 +30,7 @@
       <div class="d-flex my-2">
         <p class="wid-30">税込価格<br>(税抜価格)</p>
         <div class="wid-60">
-          <%= @item.price + @item.price*0.1.floor %><span><%= "(#{@item.price})" %></span>円
+          <%= ((@item.price + @item.price*0.1).floor).to_s(:delimited) %><span><%= "(#{@item.price.to_s(:delimited)})" %></span>円
         </div>
       </div>
       <div class="d-flex my-2">
