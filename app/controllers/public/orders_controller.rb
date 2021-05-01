@@ -59,9 +59,9 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
 
     if @order.save
-      @order_item = OrderItem.new
-      @order_item.order_id = @order.id
       current_customer.cart_items.each do |cart_item|
+        @order_item = OrderItem.new
+        @order_item.order_id = @order.id
         @order_item.item_id = cart_item.item.id
         @order_item.tax_included_price = (cart_item.item.price + cart_item.item.price*0.1).floor
         @order_item.amount = cart_item.amount

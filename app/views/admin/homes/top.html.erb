@@ -21,8 +21,11 @@
           <%= order.customer.last_name + order.customer.first_name %>
         </td>
         <td>
-          <%= "amount" %>
-          <!--%= order.order_items.amount %-->
+          <% sum = 0 %>
+          <% order.order_items.each do |order_item| %>
+            <% sum = sum + order_item.amount %>
+          <% end %>
+          <%= sum %>
         </td>
         <td>
           <%= order.order_status_i18n %>

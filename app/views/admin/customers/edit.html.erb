@@ -49,12 +49,16 @@
     <%= f.label :email, "メールアドレス", class: "wid-16" %>
     <%= f.text_field :email, class: "wid-25" %>
   </div>
-  <div class="my-2">
+  <div class="d-flex my-2">
     <%= f.label :is_deleted, "会員ステータス", class: "wid-16" %>
-    <%= f.radio_button :is_deleted, :effective, checked: true %>
-    <%= f.label :is_deleted, "有効" %>
-    <%= f.radio_button :is_deleted, :withdrawal, class: "ml-3" %>
-    <%= f.label :is_deleted, "退会" %>
+    <div>
+      <%= f.radio_button :is_deleted, :effective, checked: true %>
+      <%= f.label :is_deleted, "有効", value: :effective %>
+    </div>
+    <div>
+      <%= f.radio_button :is_deleted, :withdrawal, class: "ml-3" %>
+      <%= f.label :is_deleted, "退会", value: :withdrawal %>
+    </div>
   </div>
   <div class="mt-5">
     <%= f.submit "変更を保存", class: "btn btn-success px-4 py-2 update-btn" %>
