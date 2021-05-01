@@ -19,12 +19,6 @@ class Admin::ItemsController < ApplicationController
       @item.genre_id=@genre.id
     end
 
-    if params[:item][:is_active] == "true"
-      @item.is_active = true
-    elsif params[:item][:is_active] == "false"
-      @item.is_active = false
-    end
-
     if @item.save
       redirect_to admin_item_path(@item.id)
     else
@@ -63,7 +57,7 @@ class Admin::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:genre_id, :name, :image, :introduction, :price)
+    params.require(:item).permit(:genre_id, :name, :image, :introduction, :price, :is_active)
   end
 
 end
