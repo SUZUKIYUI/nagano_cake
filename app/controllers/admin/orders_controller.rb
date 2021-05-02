@@ -8,21 +8,16 @@ class Admin::OrdersController < ApplicationController
   def update
     @order=Order.find(params[:id])
 
-    if params[:order][:order_status] == "0"
-      @order.order_status = 0
-    elsif params[:order][:order_status] == "1"
-      @order.order_status = 1
-    elsif params[:order][:order_status] == "2"
-      @oeder.order_status = 2
-    elsif params[:order][:order_status] == "3"
-      @order.order_status = 3
-    elsif params[:order][:order_status] == "4"
-      @order.order_status = 4
-    end
-
-    if @order.update
+    if @order.update(order_params)
       redirect_to admin_order_path(@order.id)
     end
+  end
+
+# この下に何も記述しないこと！
+  private
+
+  def order_params
+    params.require(:order).permit(:order_status)
   end
 
 end
