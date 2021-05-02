@@ -1,6 +1,15 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # ログアウト後のリダイレクト先（管理者側）
+  def after_sign_out_path_for(resource)
+    if resource == :admin
+      new_admin_session_path
+    else
+      new_customer_session_path
+    end
+  end
+
   # この下に何も記述しないこと！
   protected
 

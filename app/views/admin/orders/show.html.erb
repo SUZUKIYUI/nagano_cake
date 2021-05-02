@@ -19,7 +19,7 @@
   <p class="wid-16 font-bold">支払方法</p>
   <%= @order.method_of_payment_i18n %>
 </div>
-<%= form_with model:@order, local: true do |f| %>
+<%= form_with model: @order, url: admin_order_path(@order.id), local: true do |f| %>
   <div class="d-flex my-2 align-items-baseline">
     <%= f.label :order_status, "注文ステータス", class: "wid-16 font-bold" %>
     <%= f.select :order_status, [["入金待ち", 0], ["入金確認", 1], ["製作中", 2], ["発送準備中", 3], ["発送済み", 4]], {}, {class: "wid-15"} %>
