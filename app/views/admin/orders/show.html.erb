@@ -22,7 +22,7 @@
 <%= form_with model:@order, url: admin_order_path(@order.id), local: true do |f| %>
   <div class="d-flex my-2 align-items-baseline">
     <%= f.label :order_status, "注文ステータス", class: "wid-16 font-bold" %>
-    <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
+    <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]}, {}, {class: "wid-15"} %>
     <%= f.submit "更新", class: "btn btn-success px-2 ml-5" %>
   </div>
 <% end %>
@@ -57,9 +57,9 @@
             <td>
               <%= (order_item.tax_included_price * order_item.amount).to_s(:delimited) %>
             </td>
-            <%= form_with model: order_item, url: admin_order_order_item_path(order_item), local: true do |f| %>
+            <%= form_with model: [@order, order_item], url: admin_order_order_item_path(order_id: @order.id, id: order_item.id), local: true do |f| %>
               <td>
-                <%= f.select :production_status, [["着手不可", 0], ["制作待ち", 1], ["製作中", 2], ["制作完了", 3]], {}, {class: "wid-100"} %>
+                <%= f.select :production_status, OrderItem.production_statuses.keys.map{|k| [I18n.t("enums.order_item.production_status.#{k}"), k]}, {}, {class: "wid-90"} %>
               </td>
               <td class="text-right">
                 <%= f.submit "更新", class: "btn btn-success px-2" %>
