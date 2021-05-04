@@ -39,7 +39,6 @@
           <th>数量</th>
           <th>小計</th>
           <th>製作ステータス</th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -57,12 +56,10 @@
             <td>
               <%= (order_item.tax_included_price * order_item.amount).to_s(:delimited) %>
             </td>
-            <%= form_with model: [@order, order_item], url: admin_order_order_item_path(order_id: @order.id, id: order_item.id), local: true do |f| %>
-              <td>
+              <td><%= form_with model: [@order, order_item], url: admin_order_order_item_path(order_id: @order.id, id: order_item.id), local: true do |f| %>
                 <%= f.select :production_status, OrderItem.production_statuses.keys.map{|k| [I18n.t("enums.order_item.production_status.#{k}"), k]}, {}, {class: "wid-90"} %>
-              </td>
+              <%= f.submit "更新", class: "btn btn-success px-2" %></td>
               <td class="text-right">
-                <%= f.submit "更新", class: "btn btn-success px-2" %>
               </td>
             <% end %>
           </tr>
