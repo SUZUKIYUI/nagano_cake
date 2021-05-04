@@ -3,7 +3,10 @@ class Admin::HomesController < ApplicationController
 
   def top
     @orders = Order.all.page(params[:page]).per(10)
-    # binding.pry
+    if params[:id]
+      @customer = Customer.find(params[:id])
+      @one_person_orders = Order.where(customer_id: @customer.id).page(params[:page]).per(10)
+    end
   end
 
 end
