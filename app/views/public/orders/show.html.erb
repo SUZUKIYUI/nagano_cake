@@ -73,18 +73,20 @@
       </thead>
       <tbody>
         <% @order.order_items.each do |order_item| %>
-          <td class="border-table">
-            <%= order_item.item.name %>
-          </td>
-          <td class="border-table">
-            <%= order_item.tax_included_price.to_s(:delimited) %>
-          </td>
-          <td class="border-table">
-            <%= order_item.amount %>
-          </td>
-          <td class="border-table">
-            <%= (order_item.tax_included_price*order_item.amount).to_s(:delimited) %>
-          </td>
+          <tr>
+            <td class="border-table">
+              <%= order_item.item.name %>
+            </td>
+            <td class="border-table">
+              <%= order_item.tax_included_price.to_s(:delimited) %>
+            </td>
+            <td class="border-table">
+              <%= order_item.amount %>
+            </td>
+            <td class="border-table">
+              <%= (order_item.tax_included_price*order_item.amount).to_s(:delimited) %>
+            </td>
+          </tr>
         <% end %>
       </tbody>
     </table>
