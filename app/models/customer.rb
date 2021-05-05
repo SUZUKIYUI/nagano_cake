@@ -23,4 +23,8 @@ class Customer < ApplicationRecord
     withdrawal: true
   }
 
+  def active_for_authentication?
+    super && (self.is_deleted == "effective")
+  end
+
 end

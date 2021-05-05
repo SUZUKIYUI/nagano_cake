@@ -19,10 +19,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
-    current_customer.is_deleted = true
-    if current_customer.update
-      redirect_to root_path
-    end
+    current_customer.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 
   # この下に何も記述しないこと！
