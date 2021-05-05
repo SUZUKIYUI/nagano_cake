@@ -51,9 +51,10 @@ class Public::Customers::RegistrationsController < Devise::RegistrationsControll
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  # 新規登録後のリダイレクト先（顧客側）
+  def after_sign_up_path_for(resource)
+    current_customer_path
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

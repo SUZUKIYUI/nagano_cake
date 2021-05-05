@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 # ------------------------会員側のルート---------------------------
 
-  devise_for :customers, skip: :all
+  devise_for :customers, skip: :all, controllers: {   registrations: 'customers/registrations' }
   devise_scope :customer do
     get "customers/sign_up" => "public/customers/registrations#new", as: :new_customer_registration
     post "customers" =>"public/customers/registrations#create", as: :customer_registration
