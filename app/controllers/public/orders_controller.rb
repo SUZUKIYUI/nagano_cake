@@ -13,6 +13,23 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @cart_items = CartItem.all
 
+    # --------------delivery_postal_code/delivery_address/delivery_addressee--------------
+    # 『ご自身の住所』が選択された場合
+    if params[:order][:address_select] == "my_address"
+      @order.delivery_address = current_customer.address
+      @order.delivery_postal_code = current_customer.postal_code
+      @order.delivery_addressee = current_customer.last_name + current_customer.first_name
+    # 『登録済住所から選択』が選択された場合
+    elsif params[:order][:address_select] == "other_address"
+      @address = Address.find(params[:order][:address_id])
+      @order.delivery_address = @address.address
+      @order.delivery_postal_code = @address.postal_code
+      @order.delivery_addressee = @address.name
+    # 『新しいお届け先』が選択された場合
+    elsif params[:order][:address_select] == "new_address"
+      @order = Order.new(order_params_check)
+    end
+
     # --------------------------------total_price------------------------------------
     item_total_price = 0
     @cart_items.each do |cart_item|
@@ -25,23 +42,6 @@ class Public::OrdersController < ApplicationController
       @order.method_of_payment = 0
     elsif params[:order][:method_of_payment] == "bank"
       @order.method_of_payment = 1
-    end
-
-    # --------------delivery_postal_code/delivery_address/delivery_addressee--------------
-    if params[:order][:address_select] == "my_address"
-       # 『ご自身の住所』が選択された場合
-      @order.delivery_address = current_customer.address
-      @order.delivery_postal_code = current_customer.postal_code
-      @order.delivery_addressee = current_customer.last_name + current_customer.first_name
-    elsif params[:order][:address_select] == "other_address"
-      # 『登録済住所から選択』が選択された場合
-      @address = Address.find(params[:order][:address_id])
-      @order.delivery_address = @address.address
-      @order.delivery_postal_code = @address.postal_code
-      @order.delivery_addressee = @address.name
-    elsif params[:order][:address_select] == "new_address"
-      # 『新しいお届け先』が選択された場合
-      @order = Order.new(order_params_check)
     end
 
   end
