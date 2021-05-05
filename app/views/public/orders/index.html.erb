@@ -22,11 +22,11 @@
         <td class="border-table">
           〒<%= order.delivery_postal_code %><br>
           <%= order.delivery_address %><br>
-          <%= order.customer.last_name + order.customer.first_name %>
+          <%= order.delivery_addressee %>
         </td>
         <td class="border-table">
           <% order.order_items.each do |order_item| %>
-            <%= order_item.item.name %>
+            <%= order_item.item.name %><br>
           <% end %>
         </td>
         <td class="border-table">
